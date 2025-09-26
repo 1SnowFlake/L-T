@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Online Food Ordering</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    body { padding-top: 70px; }
+    .menu-item-img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+    .order-status {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    .filter-section {
+      background: #f8f9fa;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-success fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Foodie Express</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="#restaurants">Restaurants</a></li>
+          <li class="nav-item"><a class="nav-link" href="#cart">Cart</a></li>
+          <li class="nav-item"><a class="nav-link" href="#order-status">Order Status</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Search and Filter -->
+  <section id="search-filter" class="container filter-section">
+    <div class="row gy-2">
+      <div class="col-md-4">
+        <input type="text" id="searchInput" class="form-control" placeholder="Search items or restaurants" />
+      </div>
+      <div class="col-md-3">
+        <select id="cuisineFilter" class="form-select">
+          <option value="">All Cuisines</option>
+          <option>Italian</option>
+          <option>Chinese</option>
+          <option>Indian</option>
+          <option>Mexican</option>
+          <option>American</option>
+        </select>
+      </div>
+      <div class="col-md-3">
+        <select id="dietFilter" class="form-select">
+          <option value="">Dietary Preference</option>
+          <option>Vegetarian</option>
+          <option>Vegan</option>
+          <option>Gluten-Free</option>
+          <option>Halal</option>
+        </select>
+      </div>
+      <div class="col-md-2">
+        <select id="priceFilter" class="form-select">
+          <option value="">Price Range</option>
+          <option value="1">&lt; ₹ 100</option>
+          <option value="2">₹ 100 - ₹ 200</option>
+          <option value="3">₹ 200+</option>
+        </select>
+      </div>
+    </div>
+  </section>
+
+  <!-- Restaurant & Menu Listing -->
+  <section id="restaurants" class="container py-4">
+    <h2 class="mb-4">Available Restaurants & Menus</h2>
+    <div id="restaurantList" class="row gy-4">
+
+      <div class="col-md-6 col-lg-4 restaurant-card" data-cuisine="italian">
+        <div class="card h-100">
+          <div class="card-header bg-success text-white">
+            <h5 class="mb-0">Mama's Italian Kitchen</h5>
+          </div>
+          <div class="card-body">
+            <div class="menu-item" data-diet="" data-price="120">
+              <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=600&q=80" alt="Margherita Pizza" class="menu-item-img mb-2" />
+              <h6>Margherita Pizza</h6>
+              <p>Classic pizza with fresh mozzarella, tomato sauce, and basil.</p>
+              <p><strong>₹ 120</strong></p>
+              <button class="btn btn-sm btn-outline-success add-to-cart" data-name="Margherita Pizza" data-price="120" data-restaurant="Mama's Italian Kitchen">Add to Cart</button>
+            </div>
+            <hr />
+            <div class="menu-item" data-diet="" data-price="150">
+              <img src="https://images.unsplash.com/photo-1627308595229-7830a5c91f9f?auto=format&fit=crop&w=600&q=80" alt="Pasta Carbonara" class="menu-item-img mb-2" />
+              <h6>Pasta Carbonara</h6>
+              <p>Traditional Italian pasta with eggs, cheese, pancetta & pepper.</p>
+              <p><strong>₹ 150</strong></p>
+              <button class="btn btn-sm btn-outline-success add-to-cart" data-name="Pasta Carbonara" data-price="150" data-restaurant="Mama's Italian Kitchen">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 restaurant-card" data-cuisine="indian">
+        <div class="card h-100">
+          <div class="card-header bg-danger text-white">
+            <h5 class="mb-0">Spice of India</h5>
+          </div>
+          <div class="card-body">
+            <div class="menu-item" data-diet="" data-price="140">
+              <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRFvhkLZ1tyeECzELkv2em06cDIx15a7_6QmGdAOf0ZGopibwe5lz1rRjRTzv9rhovV0r2ZglGdffQqV98HVj1scSD0zdqLvikz-1LvdyWk" alt="Butter Chicken" class="menu-item-img mb-2" />
+              <h6>Butter Chicken</h6>
+              <p>Rich and creamy chicken curry with Indian spices.</p>
+              <p><strong>₹ 140</strong></p>
+              <button class="btn btn-sm btn-outline-danger add-to-cart" data-name="Butter Chicken" data-price="140" data-restaurant="Spice of India">Add to Cart</button>
+            </div>
+            <hr />
+            <div class="menu-item" data-diet="vegetarian" data-price="110">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXUbKXWJspiH1EkBtdZuYO5XWYRpoBA8qm0w&s" alt="Chana Masala" class="menu-item-img mb-2" />
+              <h6>Chana Masala (Vegetarian)</h6>
+              <p>Spiced chickpea curry, perfect for vegetarians.</p>
+              <p><strong>₹ 110</strong></p>
+              <button class="btn btn-sm btn-outline-danger add-to-cart" data-name="Chana Masala" data-price="110" data-restaurant="Spice of India">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Cart & Checkout -->
+  <section id="cart" class="container py-4">
+    <h2 class="mb-4">Your Cart</h2>
+    <div id="cartItems" class="mb-3">
+      <p>Your cart is empty.</p>
+    </div>
+    <div class="d-flex justify-content-between align-items-center">
+      <h5>Total: ₹<span id="cartTotal">0</span></h5>
+      <button id="checkoutBtn" class="btn btn-success" disabled>Proceed to Checkout</button>
+    </div>
+  </section>
+
+  <!-- Order Status -->
+  <section id="order-status" class="container py-4">
+    <h2 class="mb-4">Order Tracking</h2>
+    <div id="orderStatus" class="order-status">
+      No current orders.
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="container py-4">
+    <h2 class="mb-4">Contact Us</h2>
+    <form>
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <input type="text" class="form-control" placeholder="Your Name" required pattern="[A-Za-z\s]+" title="Please enter alphabets only." />
+        </div>
+        <div class="col-md-6">
+          <input type="email" class="form-control" placeholder="Email" required />
+        </div>
+      </div>
+      <div class="mb-3">
+        <textarea class="form-control" rows="4" placeholder="Your Message" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-success">Send Message</button>
+    </form>
+  </section>
+
+  <footer class="bg-success text-white text-center py-3 mt-5">
+    &copy; 2025 Foodie Express. All rights reserved.
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const cart = [];
+    const cartItemsElem = document.getElementById('cartItems');
+    const cartTotalElem = document.getElementById('cartTotal');
+    const checkoutBtn = document.getElementById('checkoutBtn');
+    const orderStatusElem = document.getElementById('orderStatus');
+
+    function renderCart() {
+      if (cart.length === 0) {
+        cartItemsElem.innerHTML = '<p>Your cart is empty.</p>';
+        cartTotalElem.textContent = '0';
+        checkoutBtn.disabled = true;
+        return;
+      }
+      let total = 0;
+      let html = '<ul class="list-group">';
+      cart.forEach((item, index) => {
+        html += `<li class="list-group-item d-flex justify-content-between align-items-center">
+          ${item.name} <span class="badge bg-primary rounded-pill">₹${item.price}</span>
+          <button class="btn btn-sm btn-danger ms-3" onclick="removeFromCart(${index})">Remove</button>
+        </li>`;
+        total += item.price;
+      });
+      html += '</ul>';
+      cartItemsElem.innerHTML = html;
+      cartTotalElem.textContent = total.toFixed(2);
+      checkoutBtn.disabled = false;
+    }
+
+    function addToCart(name, price) {
+      cart.push({ name, price: parseFloat(price) });
+      renderCart();
+    }
+
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      renderCart();
+    }
+
+    document.querySelectorAll('.add-to-cart').forEach(button => {
+      button.addEventListener('click', () => {
+        const name = button.getAttribute('data-name');
+        const price = button.getAttribute('data-price');
+        addToCart(name, price);
+      });
+    });
+
+    checkoutBtn.addEventListener('click', () => {
+      if (cart.length === 0) return;
+      orderStatusElem.textContent = 'Order placed! Preparing your food...';
+      setTimeout(() => orderStatusElem.textContent = 'Your order is out for delivery!', 5000);
+      setTimeout(() => {
+        orderStatusElem.textContent = 'Order delivered! Enjoy your meal.';
+        cart.length = 0;
+        renderCart();
+      }, 10000);
+      checkoutBtn.disabled = true;
+    });
+
+    const searchInput = document.getElementById('searchInput');
+    const cuisineFilter = document.getElementById('cuisineFilter');
+    const dietFilter = document.getElementById('dietFilter');
+    const priceFilter = document.getElementById('priceFilter');
+    const restaurantCards = document.querySelectorAll('.restaurant-card');
+
+    function filterRestaurants() {
+      const searchText = searchInput.value.toLowerCase();
+      const cuisine = cuisineFilter.value.toLowerCase();
+      const diet = dietFilter.value.toLowerCase();
+      const priceRange = priceFilter.value;
+
+      restaurantCards.forEach(card => {
+        const restaurantName = card.querySelector('.card-header h5').textContent.toLowerCase();
+
+        const menuItems = card.querySelectorAll('.menu-item');
+        let hasMatchingItem = false;
+
+        menuItems.forEach(item => {
+          const itemName = item.querySelector('h6').textContent.toLowerCase();
+          const itemDiet = item.getAttribute('data-diet') || '';
+          const itemPrice = parseFloat(item.getAttribute('data-price')) || 0;
+
+          const matchesSearch = restaurantName.includes(searchText) || itemName.includes(searchText);
+          const matchesCuisine = !cuisine || card.dataset.cuisine.toLowerCase() === cuisine;
+          const matchesDiet = !diet || itemDiet === diet;
+
+          let matchesPrice = true;
+          if (priceRange === '1') matchesPrice = itemPrice < 100;
+          else if (priceRange === '2') matchesPrice = itemPrice >= 100 && itemPrice <= 200;
+          else if (priceRange === '3') matchesPrice = itemPrice > 200;
+
+          if (matchesSearch && matchesCuisine && matchesDiet && matchesPrice) {
+            hasMatchingItem = true;
+          }
+        });
+
+        card.style.display = hasMatchingItem ? 'block' : 'none';
+      });
+    }
+
+    searchInput.addEventListener('input', filterRestaurants);
+    cuisineFilter.addEventListener('change', filterRestaurants);
+    dietFilter.addEventListener('change', filterRestaurants);
+    priceFilter.addEventListener('change', filterRestaurants);
+
+    renderCart();
+  </script>
+</body>
+</html>
